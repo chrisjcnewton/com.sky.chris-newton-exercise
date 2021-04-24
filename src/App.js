@@ -19,6 +19,7 @@
 
 import { Lightning, Utils } from '@lightningjs/sdk'
 import MediaList from './components/MediaList'
+import Header from './components/Header'
 import Media from './mediaData/media'
 
 export default class App extends Lightning.Component {
@@ -34,6 +35,23 @@ export default class App extends Lightning.Component {
         color: 0xff141414,
         rect: true,
         // src: Utils.asset('images/netflix-placholder.jpg'),
+      },
+      Header: {
+        x: 150,
+        y: 0,
+        type: Header,
+        data: Media.data[0],
+      },
+      ListHeader: {
+        x: 150,
+        y: 555,
+        text: {
+          fontFace: 'Regular',
+          fontSize: 30,
+          textColor: 0xffffffff,
+          text: 'Trending Now',
+          fontStyle: 'bold',
+        },
       },
       MediaList: {
         x: 150,
@@ -60,6 +78,7 @@ export default class App extends Lightning.Component {
   }
 
   updateHeader(index) {
+    this.tag('Header').header = Media.data[index]
     this.tag('Select')
       .transition('x')
       .start(index * 240 + 145)
