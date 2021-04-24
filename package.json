@@ -1,6 +1,6 @@
 {
   "name": "com.sky.chris-newton-exercise",
-  "description": "InterviewExcercise",
+  "description": "InterviewExercise",
   "dependencies": {
     "@lightningjs/sdk": "^4.3.0"
   },

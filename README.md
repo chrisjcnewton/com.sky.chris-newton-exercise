@@ -1,31 +1,19 @@
-# InterviewExcercise
+![Sky](./sky-logo.png)
+# Interview Exercise
 
-## com.sky.chris-newton-exercise
+In this repository you will find my submission for the 2nd stage coding exercise.
 
-### Getting started
+I chose `OPTION 2: Movie Catalogue:`
 
-> Before you follow the steps below, make sure you have the
-[Lightning-CLI](https://rdkcentral.github.io/Lightning-CLI/#/) installed _globally_ only your system
+I started the exercise by reading the supplied documentation and running some of the examples. Before starting the exercise I investigated the best way of testing the view I was going to create. I decided that visual regression testing would be a good way to go as the application is rendered in a single canvas element using webGL and as such is quite difficult to recreate in a unit test.
 
-```
-npm install -g @lightningjs/cli
-```
+Once I had setup the testing framework (Cypress.io) I thought about how best to complete the exercise. I decided to use the design/UX of an existing TV app to accelerate the development process.
 
-#### Running the App
+I decided that the application would consist of 3 main components.
+- A list/carsouel of the Movies
+- A Header to contain the specific information about each movie.
+- The main App component that would control the other two.
 
-1. Install the NPM dependencies by running `npm install`
+Upon app initialisation the movie data is imported and used to dynamically create the Movie List items. The state is then updated so that the Movie List has focus for keyboard input.
 
-2. Build the App using the _Lightning-CLI_ by running `lng build` inside the root of your project
-
-3. Fire up a local webserver and open the App in a browser by running `lng serve` inside the root of your project
-
-#### Developing the App
-
-During development you can use the **watcher** functionality of the _Lightning-CLI_.
-
-- use `lng watch` to automatically _rebuild_ your App whenever you make a change in the `src` or  `static` folder
-- use `lng dev` to start the watcher and run a local webserver / open the App in a browser _at the same time_
-
-#### Documentation
-
-Use `lng docs` to open up the Lightning-SDK documentation.
+When the user navigates left or right a signal is triggered with the current index of the list item. This signal is consumed by the main App component. The main app component then animates a box to highlight the current movie item and then sends the current index through to the Header componennt so that it updates the corresponding information for the currently selected Movie.
