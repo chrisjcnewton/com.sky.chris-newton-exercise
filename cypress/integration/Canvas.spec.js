@@ -1,3 +1,11 @@
+/* eslint-disable no-undef */
+before(() => {
+  cy.seedMediaData()
+  cy.wait(3000)
+})
+after(() => {
+  cy.restoreMediaData()
+})
 beforeEach(() => {
   cy.visit('http://localhost:8080')
 })

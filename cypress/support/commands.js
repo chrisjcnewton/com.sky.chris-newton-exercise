@@ -24,3 +24,11 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-plugin-snapshots/commands'
+
+Cypress.Commands.add('seedMediaData', () => {
+  cy.exec('./cypress/test-data/seed-data.sh')
+})
+
+Cypress.Commands.add('restoreMediaData', () => {
+  cy.exec('./cypress/test-data/restore-data.sh')
+})
