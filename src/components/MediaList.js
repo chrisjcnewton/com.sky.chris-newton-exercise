@@ -1,4 +1,4 @@
-import { Lightning, Utils } from '@lightningjs/sdk'
+import { Lightning } from '@lightningjs/sdk'
 import MediaListItem from './MediaListItem'
 
 export default class MediaList extends Lightning.Component {

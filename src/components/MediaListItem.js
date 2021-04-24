@@ -5,7 +5,7 @@ export default class MediaListItem extends Lightning.Component {
       rect: true,
       w: 224,
       h: 314,
-      alpha: 0.3,
+      alpha: 0.6,
     }
   }
   _init() {
@@ -15,6 +15,6 @@ export default class MediaListItem extends Lightning.Component {
     this.patch({ smooth: { alpha: 1 } })
   }
   _unfocus() {
-    this.patch({ smooth: { alpha: 0.3 } })
+    this.patch({ smooth: { alpha: 0.6 } })
   }
 }

@@ -11,7 +11,14 @@ export default class Header extends Lightning.Component {
         alpha: 0,
         transitions: { alpha: { duration: 1, timingFunction: 'ease' } },
       },
-
+      Image: {
+        w: 1215,
+        h: 688,
+        x: 733,
+        y: 0,
+        alpha: 0,
+        transitions: { alpha: { duration: 1.5, timingFunction: 'ease' } },
+      },
       TextYear: {
         mount: 0,
         x: 0,
@@ -85,7 +92,10 @@ export default class Header extends Lightning.Component {
     this.tag('Logo')
       .transition('alpha')
       .start(1)
-
+    this.tag('Image').patch({ alpha: 0, src: Utils.asset(data.headerImage) })
+    this.tag('Image')
+      .transition('alpha')
+      .start(1)
     this.tag('TextYear').patch({ text: { text: data.year } })
     this.tag('Rating').patch({ src: Utils.asset(data.rating) })
     this.tag('TextSeasons').patch({ text: { text: data.seasons } })
