@@ -18,6 +18,8 @@
  */
 
 import { Lightning, Utils } from '@lightningjs/sdk'
+import MediaList from './components/MediaList'
+import Media from './mediaData/media'
 
 export default class App extends Lightning.Component {
   static getFonts() {
@@ -29,43 +31,33 @@ export default class App extends Lightning.Component {
       Background: {
         w: 1920,
         h: 1080,
-        color: 0xfffbb03b,
-        src: Utils.asset('images/background.png'),
+        // color: 0xff141414,
+        // rect: true,
+        src: Utils.asset('images/netflix-placholder.jpg'),
       },
-      Logo: {
-        mountX: 0.5,
-        mountY: 1,
-        x: 960,
-        y: 600,
-        src: Utils.asset('images/logo.png'),
-      },
-      Text: {
-        mount: 0.5,
-        x: 960,
-        y: 720,
-        text: {
-          text: "Let's start Building!",
-          fontFace: 'Regular',
-          fontSize: 64,
-          textColor: 0xbbffffff,
+      MediaList: {
+        x: 150,
+        y: 605,
+        type: MediaList,
+        signals: {
+          updateHeader: true,
         },
       },
     }
   }
 
   _init() {
-    this.tag('Background')
-      .animation({
-        duration: 15,
-        repeat: -1,
-        actions: [
-          {
-            t: '',
-            p: 'color',
-            v: { 0: { v: 0xfffbb03b }, 0.5: { v: 0xfff46730 }, 0.8: { v: 0xfffbb03b } },
-          },
-        ],
-      })
-      .start()
+    this.tag('MediaList').items = Media.data.map(tile => ({ url: tile.url }))
+    this._setState('MediaList')
+  }
+
+  static _states() {
+    return [
+      class MediaList extends this {
+        _getFocused() {
+          return this.tag('MediaList')
+        }
+      },
+    ]
   }
 }
