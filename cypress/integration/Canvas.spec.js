@@ -20,4 +20,7 @@ describe('Media Selection view', () => {
     cy.wait(3000)
     cy.get('body').toMatchImageSnapshot()
   })
+  it('Dummy test to force after to trigger if a test fails', () => {
+    cy.get('body')
+  })
 })

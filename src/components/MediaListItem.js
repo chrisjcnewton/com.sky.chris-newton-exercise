@@ -5,15 +5,16 @@ export default class MediaListItem extends Lightning.Component {
       rect: true,
       w: 224,
       h: 314,
+      alpha: 0.3,
     }
   }
   _init() {
     this.patch({ src: Utils.asset(this.item.url) })
   }
   _focus() {
-    this.patch({ smooth: { scale: 1.05 } })
+    this.patch({ smooth: { alpha: 1 } })
   }
   _unfocus() {
-    this.patch({ smooth: { scale: 1 } })
+    this.patch({ smooth: { alpha: 0.3 } })
   }
 }

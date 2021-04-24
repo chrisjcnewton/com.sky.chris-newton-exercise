@@ -13,7 +13,7 @@ export default class MediaList extends Lightning.Component {
       return {
         ref: 'MediaListItem-' + index, //optional, for debug purposes
         type: MediaListItem,
-        x: index * 239,
+        x: index * 240,
         item, //passing the item as an attribute
       }
     })

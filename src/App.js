@@ -31,9 +31,9 @@ export default class App extends Lightning.Component {
       Background: {
         w: 1920,
         h: 1080,
-        // color: 0xff141414,
-        // rect: true,
-        src: Utils.asset('images/netflix-placholder.jpg'),
+        color: 0xff141414,
+        rect: true,
+        // src: Utils.asset('images/netflix-placholder.jpg'),
       },
       MediaList: {
         x: 150,
@@ -43,12 +43,26 @@ export default class App extends Lightning.Component {
           updateHeader: true,
         },
       },
+      Select: {
+        w: 234,
+        h: 324,
+        src: Utils.asset('images/select.png'),
+        x: 145,
+        y: 600,
+        transitions: { x: { duration: 0.2, timingFunction: 'ease' } },
+      },
     }
   }
 
   _init() {
     this.tag('MediaList').items = Media.data.map(tile => ({ url: tile.url }))
     this._setState('MediaList')
+  }
+
+  updateHeader(index) {
+    this.tag('Select')
+      .transition('x')
+      .start(index * 240 + 145)
   }
 
   static _states() {
