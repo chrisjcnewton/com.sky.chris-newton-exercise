@@ -18,9 +18,6 @@ const media = {
     {
       url: 'images/tile-06.jpg',
     },
-    {
-      url: 'images/tile-07.jpg',
-    },
   ],
 }
 
